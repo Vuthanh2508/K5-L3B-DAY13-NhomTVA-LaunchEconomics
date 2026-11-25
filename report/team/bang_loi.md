@@ -4,7 +4,7 @@
 
 ## Hai bộ nhãn độc lập
 
-Người gắn nhãn 1: ... · Người gắn nhãn 2: Dương Minh Chiến (gắn trong 8 phút, không trao đổi)
+Người gắn nhãn 1: Đỗ Việt Anh · Người gắn nhãn 2: Dương Minh Chiến (gắn trong 8 phút, không trao đổi)
 
 | Ca | Nhãn người 1 | Nhãn người 2 | Trùng? | Nhãn thống nhất |
 | --: | --- | --- | --- | --- |
