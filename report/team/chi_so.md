@@ -4,11 +4,11 @@
 
 | Loại | Chỉ số | Công thức | Tính thử trên 1.200 yêu cầu |
 | --- | --- | --- | --- |
-| Chính (kết quả) | % yêu cầu đóng trong 24 giờ và không mở lại trong 7 ngày | `dong_trong_24h` bằng 1 và `mo_lai_trong_7_ngay` bằng 0, chia tổng số yêu cầu | ... |
-| Dùng | Tỉ lệ bỏ qua gợi ý | `quyet_dinh_xem_lai` là `sua` hoặc `bo`, chia số yêu cầu được xem lại | ... |
-| An toàn | Tỉ lệ lỗi lọt đến khách | `mo_lai_trong_7_ngay` bằng 1, chia tổng số yêu cầu | ... |
-| Dùng | Nhóm tự đề xuất: ... | ... | Không cần tính |
-| An toàn | Nhóm tự đề xuất: ... | ... | Không cần tính |
+| Chính (kết quả) | % yêu cầu đóng trong 24 giờ và không mở lại trong 7 ngày | `dong_trong_24h` bằng 1 và `mo_lai_trong_7_ngay` bằng 0, chia tổng số yêu cầu | 82,83% (994/1.200; dữ liệu giả lập) |
+| Dùng | Tỉ lệ bỏ qua gợi ý | `quyet_dinh_xem_lai` là `sua` hoặc `bo`, chia số yêu cầu được xem lại | 27,12% (48/177; dữ liệu giả lập) |
+| An toàn | Tỉ lệ lỗi lọt đến khách | `mo_lai_trong_7_ngay` bằng 1, chia tổng số yêu cầu | 4,25% (51/1.200; dữ liệu giả lập) |
+| Dùng | Tỉ lệ yêu cầu nhóm can thiệp có gợi ý trợ lý được hiển thị | Số `request_id` có `agent_suggestion_shown` / số yêu cầu được phân vào arm can thiệp | Chưa tính được từ CSV hiện tại; đo bằng event |
+| An toàn | Tỉ lệ đơn hoàn sai tiền trong mẫu kiểm toán | Số `audit_sample_checked` có `lech_vnd != 0` / tổng số đơn được kiểm toán | Chưa tính được từ CSV hiện tại; đo bằng event |
 
 Viết "chỉ số trong đợt chạy thử là …", không viết "trợ lý đã nâng chỉ số": đợt chạy thử không có nhóm đối chứng.
 
@@ -36,7 +36,8 @@ Viết "chỉ số trong đợt chạy thử là …", không viết "trợ lý 
 - **Chính (`% đóng trong 24h và không mở lại trong 7 ngày`):** nối qua `request_id` (và `trace_id`), tách theo `arm` và `loai` từ `refund_request_created` (`created_at`), kiểm tra `ticket_closed` (`closed_at <= created_at + 24h`) và không có `ticket_reopened` trong 7 ngày sau `closed_at`.
 - **Dùng (`Tỉ lệ bỏ qua gợi ý`):** số event `staff_review_decision` có `quyet_dinh` là `sua` hoặc `bo`, chia cho tổng số lượt có quyết định ở `staff_review_decision` (khớp định nghĩa `duoc_xem_lai == 1`).
 - **An toàn (`Tỉ lệ lỗi lọt đến khách`):** số `request_id` có `ticket_reopened` trong 7 ngày sau `ticket_closed`, chia cho tổng `refund_request_created` (tách riêng theo từng `arm`).
-- **Hai chỉ số tự đề xuất (E1 dòng 4–5):** khi Người 2 chốt tên chỉ số, dùng `agent_suggestion_shown` / `staff_review_decision` (cho chỉ số dùng theo `arm`, `staff_id`) và `audit_sample_checked` hoặc đối soát `refund_notice_sent` với `refund_ledger_write` (cho chỉ số an toàn bắt lỗi ngầm, lệch sổ cái hoặc hoàn trùng).
+- **Dùng (dòng 4):** nối `refund_request_created.arm` với `agent_suggestion_shown` theo `request_id`; chia số yêu cầu arm can thiệp có gợi ý được hiển thị cho tổng yêu cầu arm can thiệp. CSV hiện tại không có event/arm nên chưa tính được.
+- **An toàn (dòng 5):** lấy `audit_sample_checked.lech_vnd != 0` chia tổng event `audit_sample_checked`; CSV hiện tại không có mẫu kiểm toán nên chưa tính được.
 
 ## E2 · Rủi ro kinh tế
 
@@ -44,5 +45,6 @@ Viết "chỉ số trong đợt chạy thử là …", không viết "trợ lý 
 
 | Rủi ro | Tác động đã tính | Dấu hiệu theo dõi | Hành động | Người phụ trách |
 | --- | --- | --- | --- | --- |
-| ... | ... | ... | ... | ... |
-| ... | ... | ... | ... | ... |
+| Số ca làm lại tăng gấp đôi | CPS tăng 51,8%, từ 4.472 lên 6.787 đ/việc (simulated) | Tỉ lệ `lam_lai` theo tuần >7%; hiện tại 4,9% trong `noi_dia` + `hang_nang` | Thu hẹp về `noi_dia`, rà 20 trace làm lại | PM trợ lý hoàn phí |
+| Phải xem lại 100% kéo dài | CPS 11.743 đ (0,98×); nếu làm lại trung bình 15,3 phút thì 12.415 đ (1,03×, simulated) | Tỉ lệ yêu cầu được xem lại >50% ở cuối bước rollout 0,25 | Giảm xem lại theo bậc khi tỉ lệ sửa + bỏ <15% | Trưởng nhóm CSKH |
+| Khối lượng thấp hơn dự kiến | Chi phí cố định tăng thêm 1.185 đ/việc ở 45.000 yêu cầu/tháng, lên 2.370 đ/việc khi còn nửa khối lượng (simulated) | Số việc thành công theo tuần <50% kế hoạch | Không mở rộng pilot; xem lại chi phí cố định | PM trợ lý hoàn phí |
