@@ -4,6 +4,8 @@ Không cần khoá API. Điền các chỗ ghi VIẾT Ở ĐÂY (đánh dấu TO
 Bản gốc chưa sửa nằm ở lab13_starter.py.
 """
 import math
+from statistics import NormalDist
+
 import pandas as pd
 
 # Bảng giá GIẢ ĐỊNH của lab (không phải giá thật của nhà cung cấp nào)
@@ -228,6 +230,18 @@ def khao_sat_xem_lai_100_phan_tram(runs, reqs, pham_vi=('noi_dia', 'hang_nang'),
     return ket_qua
 
 
+def co_mau(p1, p2, alpha=0.05, power=0.8):
+    """Cỡ mẫu mỗi nhóm để so sánh hai tỷ lệ độc lập."""
+    z_alpha = NormalDist().inv_cdf(1 - alpha / 2)
+    z_power = NormalDist().inv_cdf(power)
+    p_trung_binh = (p1 + p2) / 2
+    tu_so = (
+        z_alpha * math.sqrt(2 * p_trung_binh * (1 - p_trung_binh))
+        + z_power * math.sqrt(p1 * (1 - p1) + p2 * (1 - p2))
+    ) ** 2
+    return math.ceil(tu_so / (p2 - p1) ** 2)
+
+
 if __name__ == '__main__':
     runs = pd.read_csv('logix_runs.csv')
     reqs = pd.read_csv('logix_requests.csv', keep_default_na=False)
@@ -303,6 +317,44 @@ if __name__ == '__main__':
             f"CPS = {r['cps']:>6,.0f} đ ({r['so_voi_baseline']:.2f}x) | Hòa vốn xem lại <= {r['xem_lai_hoa_von_phut']:.1f} phút"
         )
 
-    # TODO CP4 · Nhiệm vụ D: cỡ mẫu.
-    #   from statsmodels.stats.proportion import proportion_effectsize
-    #   from statsmodels.stats.power import NormalIndPower
+    print('\n--- D1 · Cỡ mẫu (baseline=0.70, alpha=0.05, power=0.80, ICC=0.02) ---')
+    p1, p2, icc = 0.70, 0.75, 0.02
+    n_yeu_cau = co_mau(p1, p2)
+    print(f'a) Chia theo yêu cầu: {n_yeu_cau:,} yêu cầu mỗi nhóm')
+
+    so_yeu_cau_moi_nhan_vien = 75
+    de_75 = 1 + (so_yeu_cau_moi_nhan_vien - 1) * icc
+    n_nhan_vien = math.ceil(n_yeu_cau * de_75)
+    print(
+        f'b) Theo nhân viên, m=75: DE={de_75:.2f}; '
+        f'{n_nhan_vien:,} mỗi nhóm, cần {math.ceil(n_nhan_vien / so_yeu_cau_moi_nhan_vien)} nhân viên/nhóm'
+    )
+
+    n_20_nhan_vien_hieu_dung = 20 / icc
+    print(
+        f'c) 20 nhân viên mỗi nhóm: tối đa {n_20_nhan_vien_hieu_dung:,.0f} mẫu hiệu dụng '
+        f'(< {n_yeu_cau:,} cần cho mức chênh 5 điểm)'
+    )
+
+    n_6_depot_hieu_dung = 6 / icc
+    print(f'd) 6 depot mỗi nhóm: tối đa {n_6_depot_hieu_dung:,.0f} mẫu hiệu dụng')
+
+    n_6_diem = co_mau(0.70, 0.76)
+    so_cum = 20
+    m_toi_thieu = next(
+        m for m in range(1, 10000)
+        if so_cum * m / (1 + (m - 1) * icc) >= n_6_diem
+    )
+    de_m_toi_thieu = 1 + (m_toi_thieu - 1) * icc
+    print(
+        f'e) Chênh 6 điểm: {n_6_diem:,} mỗi nhóm; với {so_cum} nhân viên/nhóm cần '
+        f'{m_toi_thieu} yêu cầu/nhân viên (DE={de_m_toi_thieu:.2f})'
+    )
+
+    reopen = reqs['mo_lai_trong_7_ngay'].astype(int)
+    pham_vi_pilot = reqs[reqs['loai'].isin(['noi_dia', 'hang_nang'])]
+    reopen_pilot = pham_vi_pilot['mo_lai_trong_7_ngay'].astype(int)
+    print(
+        f'Tỉ lệ mở lại 7 ngày hiện tại: {reopen.sum()}/{len(reopen)} = {reopen.mean():.2%}; '
+        f'noi_dia + hang_nang: {reopen_pilot.sum()}/{len(reopen_pilot)} = {reopen_pilot.mean():.2%}'
+    )
