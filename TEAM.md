@@ -14,7 +14,7 @@
 |   1 | Vũ Thành | 2A202603930 | Vuthanhdz2508@gmail.com | Vuthanh2508 | Người viết code (lượt 1: CP1–CP2) |
 |   2 |        |      |       |        | Người kiểm số + người viết code (lượt 2: CP4) |
 |   3 |        |      |       |        | Người gắn nhãn 1 (kiêm rà điều kiện "Xong khi") |
-|   4 | Dương Minh Chiến | 2A202603921 |       |        | Người gắn nhãn 2, kiêm giữ hồ sơ |
+|   4 | Dương Minh Chiến | 2A202603921 | duongchien1472005@gmail.com | duongchien147 | Người gắn nhãn 2, kiêm giữ hồ sơ |
 
 Bốn vai của lab:
 
