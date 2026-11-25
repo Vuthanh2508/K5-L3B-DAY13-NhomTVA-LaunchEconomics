@@ -12,7 +12,7 @@
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
 |   1 | Vũ Thành | 2A202603930 | Vuthanhdz2508@gmail.com | Vuthanh2508 | Người viết code (lượt 1: CP1–CP2) |
-|   2 |        |      |       |        | Người kiểm số + người viết code (lượt 2: CP4) |
+|   2 | Trần Đức Trung | 2A202603938 | kientrungtd135@gmail.com | Chưa cung cấp | Người kiểm số + người viết code  |
 |   3 |        |      |       |        | Người gắn nhãn 1 (kiêm rà điều kiện "Xong khi") |
 |   4 | Dương Minh Chiến | 2A202603921 | duongchien1472005@gmail.com | duongchien147 | Người gắn nhãn 2, kiêm giữ hồ sơ |
 
@@ -37,19 +37,22 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 Sao chép mục dưới đây cho từng thành viên.
 
-## HoVaTen-MSSV
+## TranDucTrung-2A202603938
 
 ### Phần việc phụ trách
 
--
+- Người kiểm số và người viết code lượt 2: đối chiếu một số liệu CP1–CP2; hoàn thiện B3–B4, D1 và tỉ lệ mở lại 7 ngày; tính ba chỉ số E1 và viết E2.
 
 ### Đóng góp cụ thể
 
--
+- Tự đối chiếu hoá đơn token và tool: (245.585 + 84.000) / 1.200 = 274,65 đ/yêu cầu, làm tròn 274,7 đ.
+- Hoàn thiện B3–B4 trong `report/team/bang_chi_phi.md`; chi phí toàn hệ thống thấp nhất ở giới hạn 2 lần (6.901.220 đ), còn CPS thấp nhất ở giới hạn 1 lần (4.111 đ). B4: CPS 11.743 đ với giả định 9 phút làm lại; 12.415 đ theo dữ liệu simulated.
+- Bổ sung D1 a–e và tỉ lệ mở lại vào `src/lab13.py`: cỡ mẫu 1.251/nhóm cho chênh 5 điểm; 859/nhóm và 299 yêu cầu/nhân viên cho chênh 6 điểm; tỉ lệ mở lại hiện tại 4,25% toàn mẫu.
+- Điền ba chỉ số E1 và ba rủi ro kinh tế E2 vào `report/team/chi_so.md`; nêu rõ hai chỉ số đề xuất chưa tính được từ CSV hiện tại.
 
 ### Bằng chứng
 
--
+- Commit `2e78b7d` (B3–B4), `78262c9` (D1), `dcaf3cf` (E1–E2); các file `report/team/bang_chi_phi.md`, `src/lab13.py`, `report/team/chi_so.md` và báo cáo cá nhân `report/team/2A202603938_TranDucTrung.md`.
 
 ## DuongMinhChien-2A202603921
 
