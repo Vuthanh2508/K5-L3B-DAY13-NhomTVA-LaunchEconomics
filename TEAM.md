@@ -12,7 +12,7 @@
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
 |   1 | Vũ Thành | 2A202603930 | Vuthanhdz2508@gmail.com | Vuthanh2508 | Người viết code (lượt 1: CP1–CP2) |
-|   2 |        |      |       |        | Người kiểm số + người viết code (lượt 2: CP4) |
+|   2 | Đỗ Việt Anh  | 2A202603973     | dovietanh240405@gmail.com      | vietahnn       | Người kiểm số + người viết code (lượt 2: CP4) |
 |   3 |        |      |       |        | Người gắn nhãn 1 (kiêm rà điều kiện "Xong khi") |
 |   4 | Dương Minh Chiến | 2A202603921 |       |        | Người gắn nhãn 2, kiêm giữ hồ sơ |
 
