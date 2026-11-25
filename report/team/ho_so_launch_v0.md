@@ -10,7 +10,7 @@ Nhóm: NhomTVA · Lớp: L3B
 | 2 · Ba yếu tố nhạy nhất | 1. Số ca làm lại gấp đôi: **+51,8%** → 6.787 đ · 2. Tỉ lệ xem lại gấp đôi: **+40,7%** → 6.292 đ · 3. Lương tăng 25%: **+23,1%** → 5.506 đ [simulated]. Giá token gấp đôi chỉ +5,6% | Giả lập | PM trợ lý hoàn phí |
 | 3 · So với nhân viên tự làm (12.000 đ) | Cả hệ thống (cộng 222 ca không thành công × 12.000 đ): **5.865 đ/yêu cầu = 0,49×** [simulated]. Theo loại: noi_dia 0,22× · hang_nang 0,69× · doi_tac 0,85× · quoc_te **1,88×** [simulated] → loại quoc_te, doi_tac khỏi phạm vi | Giả lập | Giám đốc vận hành |
 | 4 · Chỉ số chính, chỉ số dùng, chỉ số an toàn | _Chờ Người 2 tính thử (CP5, `chi_so.md`)_ | Chưa | ... |
-| 5 · Bảng lỗi và cách khắc phục | Hai người gắn nhãn độc lập, đồng thuận **20/20 = 100%**. Phân bổ: Do người dùng 4 · Hệ thống 5 · Ngữ cảnh 4 · Giới hạn 4 · Ngầm 3 ca. _Chờ bảng khắc phục 5 ca_ | Chưa | ... |
+| 5 · Bảng lỗi và cách khắc phục | Hai người gắn nhãn độc lập, đồng thuận **20/20 = 100%** (Do người dùng 4 · Hệ thống 5 · Ngữ cảnh 4 · Giới hạn 4 · Ngầm 3 ca); đã có bảng khắc phục 5 ca đủ 5 loại (ca 9, 7, 18, 4, 17) có event/ngưỡng đo được | Xong, có bằng chứng | Kỹ sư trưởng agent |
 | 6 · Pilot plan | _Chờ CP4 (`pilot_plan.yaml`): cách chia, cỡ mẫu, 3 luật dừng_ | Chưa | ... |
 | 7 · Rủi ro kinh tế | _Chờ Người 2 (E2 trong `chi_so.md`)_ | Chưa | ... |
 

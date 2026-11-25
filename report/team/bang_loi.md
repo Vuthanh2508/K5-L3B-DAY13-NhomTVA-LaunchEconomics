@@ -43,8 +43,8 @@ Cách phát hiện phải đo được (event, ngưỡng, tần suất). Ngườ
 
 | Ca | Loại lỗi | Phát hiện bằng gì | Khắc phục thế nào | Ai phụ trách |
 | --: | --- | --- | --- | --- |
-| ... | Do người dùng | ... | ... | ... |
-| ... | Hệ thống | ... | ... | ... |
-| ... | Ngữ cảnh | ... | ... | ... |
-| ... | Giới hạn hệ thống | ... | ... | ... |
-| ... | Ngầm | ... | ... | ... |
+| 9 | Do người dùng | Event `input_validation_failed` (kèm `trace_id`); cảnh báo khi vượt 2% số yêu cầu/ngày | Nhận diện định dạng mã sàn TMĐT và tra sang mã vận đơn; không tra được thì hướng dẫn nhập lại kèm ảnh | PM trợ lý hoàn phí |
+| 7 | Hệ thống | Đối soát mỗi giờ: tin nhắn "đã hoàn" không có bản ghi sổ cái `ok` cùng `trace_id`; ngưỡng cảnh báo 0 ca | Chỉ báo "đã hoàn" khi sổ cái trả `ok`; nếu lỗi 503 sau các lần thử lại thì báo "đang xử lý" và chuyển nhân viên | Kỹ sư trưởng agent |
+| 18 | Ngữ cảnh | Thống kê hằng tuần: tỉ lệ `ticket_reopened` vì lý do số tiền nhưng kiểm tra thấy đúng vượt 1% số đơn hoàn | Cập nhật mẫu tin nhắn luôn ghi rõ công thức tính chi tiết (ví dụ: 30.000 đ × 50% = 15.000 đ) | Trưởng nhóm CSKH |
+| 4 | Giới hạn hệ thống | Event `handoff_to_staff` với `reason = thieu_du_lieu`, theo dõi hằng ngày theo loại yêu cầu (cảnh báo nếu phát sinh trong phạm vi pilot) | Giữ cơ chế chuyển nhân viên kèm tóm tắt bối cảnh; đưa `quoc_te` ra khỏi phạm vi pilot | PM trợ lý hoàn phí |
+| 17 | Ngầm | Kiểm tra mẫu ngẫu nhiên 100 đơn/tuần (`audit_sample_checked`) so với bảng giá hiện hành; ngưỡng cảnh báo > 1% đơn lệch | Xoá bộ nhớ đệm khi có bảng giá mới và ghi phiên bản bảng giá vào trace | Kế toán trưởng |
