@@ -3,18 +3,18 @@
 ## Thông tin nhóm
 
 - Tên nhóm: NhomTVA
-- Lớp:L3B
+- Lớp: L3B
 - Repo nhóm: `K5-L3B-DAY13-NhomTVA-LaunchEconomics` (xem [SUBMISSION.md](SUBMISSION.md))
-- URL repo, nhánh nộp, commit chốt: https://github.com/Vuthanh2508/K5-L3B-DAY13-NhomTVA-LaunchEconomics
+- URL repo, nhánh nộp, commit chốt: https://github.com/Vuthanh2508/K5-L3B-DAY13-NhomTVA-LaunchEconomics · nhánh `main` · commit chốt: (điền khi push cuối)
 
 ## Thành viên
 
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
-|   1 |Vũ Thành|2A202603930|Vuthanhdz2508@gmail.com|Vuthanh2508|Người viết code|
-|   2 |        |      |       |        |         |
-|   3 |        |      |       |        |         |
-|   4 |        |      |       |        |         |
+|   1 | Vũ Thành | 2A202603930 | Vuthanhdz2508@gmail.com | Vuthanh2508 | Người viết code (lượt 1: CP1–CP2) |
+|   2 |        |      |       |        | Người kiểm số + người viết code (lượt 2: CP4) |
+|   3 |        |      |       |        | Người gắn nhãn 1 (kiêm rà điều kiện "Xong khi") |
+|   4 |        |      |       |        | Người gắn nhãn 2, kiêm giữ hồ sơ |
 
 Bốn vai của lab:
 
