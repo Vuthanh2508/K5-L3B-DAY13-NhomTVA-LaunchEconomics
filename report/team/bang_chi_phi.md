@@ -70,13 +70,13 @@ Số tính bằng `src/lab13.py`. Mọi con số tính từ cột `_simulated` g
 
 | Giới hạn | Tổng chi phí trợ lý | Số yêu cầu không thành công | Chi phí cả hệ thống | Chi phí mỗi việc thành công |
 | --- | ---: | ---: | ---: | ---: |
-| 1 lần | ... | ... | ... | ... |
-| 2 lần | ... | ... | ... | ... |
-| 3 lần | ... | ... | ... | ... |
+| 1 lần | 3.621.781 đ (simulated) | 319 | 7.449.781 đ (simulated) | 4.111 đ (simulated) |
+| 2 lần | 4.093.220 đ (simulated) | 234 | 6.901.220 đ (simulated) | 4.237 đ (simulated) |
+| 3 lần | 4.373.585 đ (simulated) | 222 | 7.037.585 đ (simulated) | 4.472 đ (simulated) |
 
-- Giới hạn nào rẻ nhất cho công ty? Có trùng với giới hạn cho chi phí mỗi việc thành công thấp nhất không? ...
+- Giới hạn 2 lần rẻ nhất cho công ty: 6.901.220 đ; không trùng với cps thấp nhất (1 lần, 4.111 đ), vì thêm 85 việc phải chuyển cho nhân viên.
 
 ## B4 · Nếu phải xem lại tất cả
 
-- Chi phí mỗi việc thành công khi xem lại 100% (`noi_dia` + `hang_nang`), so với 12.000 đ: ...
-- Kết quả này nói gì về thứ pilot cần học được? ...
+- Xem lại 100%: 11.743 đ/việc = 0,98× mức 12.000 đ; nếu làm lại trung bình 15,3 phút thì 12.414 đ = 1,03× (simulated).
+- Pilot cần đo phút xem lại và làm lại thực tế; điểm hoà vốn là ≤5,1 phút xem lại (hoặc ≤4,8 phút nếu làm lại 15,3 phút, simulated).
