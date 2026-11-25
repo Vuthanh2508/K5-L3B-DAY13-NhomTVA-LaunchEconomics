@@ -35,7 +35,7 @@ Bảng lỗi đạt đồng thuận 20/20 = 100%. Pilot chia theo nhân viên 20
 
 Đề xuất cuối là Go có điều kiện cho `noi_dia` + `hang_nang`, với 4 điều kiện có người phụ trách và ngày kiểm tra.
 
-Kết quả duyệt chéo từ hội đồng: _(ghi sau buổi 17:25)_
+Kết quả duyệt chéo từ hội đồng: Nhóm Tetris chấm 25/30, mất 5 điểm ở phần Pilot ra được quyết định vì nhóm chưa tách được tác động, chưa đủ mẫu
 
 ## 5. Khó khăn và cách xử lý
 
