@@ -74,9 +74,8 @@ Số tính bằng `src/lab13.py`. Mọi con số tính từ cột `_simulated` g
 | 2 lần | 4.093.220 đ (simulated) | 234 | 6.901.220 đ (simulated) | 4.237 đ (simulated) |
 | 3 lần | 4.373.585 đ (simulated) | 222 | 7.037.585 đ (simulated) | 4.472 đ (simulated) |
 
-- Giới hạn 2 lần rẻ nhất cho công ty: 6.901.220 đ; không trùng với cps thấp nhất (1 lần, 4.111 đ), vì thêm 85 việc phải chuyển cho nhân viên.
-
+- Giới hạn 2 lần rẻ nhất cho công ty: 6.901.220 đ; không trùng với CPS thấp nhất (1 lần, 4.111 đ), vì giới hạn 1 lần có thêm 85 yêu cầu thất bại phải chuyển cho nhân viên.
 ## B4 · Nếu phải xem lại tất cả
 
-- Xem lại 100%: 11.743 đ/việc = 0,98× mức 12.000 đ; nếu làm lại trung bình 15,3 phút thì 12.414 đ = 1,03× (simulated).
+- Xem lại 100%: 11.743 đ/việc = 0,98× mức 12.000 đ; theo dữ liệu CP1, làm lại trung bình 15,3 phút cho CPS 12.415 đ = 1,03× (simulated).
 - Pilot cần đo phút xem lại và làm lại thực tế; điểm hoà vốn là ≤5,1 phút xem lại (hoặc ≤4,8 phút nếu làm lại 15,3 phút, simulated).
