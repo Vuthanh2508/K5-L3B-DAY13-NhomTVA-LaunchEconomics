@@ -4,7 +4,7 @@
 
 - Họ tên: Dương Minh Chiến
 - MSSV: 2A202603921
-- Email:
+- Email: duongchien1472005@gmail.com
 - Vai trong nhóm: Người gắn nhãn 2, kiêm giữ hồ sơ
 
 ## 2. Phần việc phụ trách
