@@ -10,15 +10,17 @@
 #   e) Mức chênh 6 điểm (859 mỗi nhóm), 20 nhân viên mỗi nhóm:
 #
 # D2 · Năm câu kiểm tra "tách được tác động" với cách chia đã chọn (mỗi câu một dòng):
-#   1. Đối chứng chạy cùng thời gian:
-#   2. Chia ngẫu nhiên hay do người chọn:
-#   3. Ảnh hưởng gián tiếp và cách giảm:
-#   4. Chỉ số chính, ngưỡng, ngày quyết định đã viết trước:
-#   5. Ít nhất 20 cụm mỗi nhóm:
+#   1. Đối chứng chạy cùng thời gian: Có, 20 nhân viên nhóm đối chứng làm song song cùng tuần và cùng 12 depot với 20 nhân viên nhóm trợ lý.
+#   2. Chia ngẫu nhiên hay do người chọn: Bốc thăm ngẫu nhiên bằng code với seed ghi trước, phân tầng theo depot.
+#   3. Ảnh hưởng gián tiếp và cách giảm: Có rủi ro nhân viên cùng depot trao đổi gợi ý; giảm bằng cấp quyền truy cập riêng theo staff_id và log agent_suggestion_shown / staff_review_decision theo từng staff_id.
+#   4. Chỉ số chính, ngưỡng, ngày quyết định đã viết trước: Có, chỉ số chính, MDE 0,06, 3 luật dừng và ngày quyết định chốt trước ngày chạy pilot.
+#   5. Ít nhất 20 cụm mỗi nhóm: Có, đúng 20 nhân viên mỗi nhóm (20 can thiệp + 20 đối chứng).
 #
 # Đánh đổi đã chấp nhận (nếu cách chia chưa đạt cả hai điều kiện):
+#   20 nhân viên/nhóm có trần mẫu hiệu dụng c/ICC = 20/0,02 = 1.000 < 1.251 nên không đủ thấy +5 điểm; chấp nhận MDE = 6 điểm (n = 859/nhóm, m >= 299 yc/người, DE = 6,96), power còn ~0,64 nếu tác động thật chỉ 5 điểm.
 #
 # Tỉ lệ mo_lai_trong_7_ngay hiện tại và ngưỡng an toàn đã chọn:
+#   Toàn mẫu 4,25% (51/1.200), phạm vi noi_dia + hang_nang là 3,97% (39/982); không đặt trần 3% (sẽ dừng ngay tuần đầu) mà chọn cao hơn đối chứng >= 2 điểm hoặc vượt trần 6%.
 
 pilot:
   owner: "?"                      # một người có tên vai trò, không ghi "cả đội"
@@ -38,13 +40,13 @@ pilot:
     design_effect: "?"            # 1 nếu chia theo yêu cầu
     clusters_per_arm: "?"         # để trống nếu chia theo yêu cầu
   identifiability:
-    concurrent_control: "?"
-    spillover_risk: "?"
-    predeclared: "?"
+    concurrent_control: "Có: 20 nhân viên đối chứng làm cùng tuần, cùng 12 depot (bốc thăm ngẫu nhiên phân tầng theo depot với seed cố định)"
+    spillover_risk: "Rủi ro chia sẻ câu trả lời trong cùng depot; giảm bằng cấp quyền truy cập trợ lý theo tài khoản staff_id và ghi log agent_suggestion_shown / staff_review_decision theo staff_id"
+    predeclared: "Có: chốt trước ngày bắt đầu gồm chỉ số chính dong_trong_24h_khong_mo_lai_7_ngay, MDE 0,06, 3 luật dừng và ngày quyết định"
   stop_rules:
-    - "NẾU ? TRONG ? THÌ ? KHÔNG THÌ ?"
-    - "NẾU ? TRONG ? THÌ ? KHÔNG THÌ ?"
-    - "NẾU ? TRONG ? THÌ ? KHÔNG THÌ ?"
+    - "NẾU tỉ lệ mở lại trong 7 ngày (ticket_reopened) của nhóm trợ lý cao hơn đối chứng >= 2 điểm phần trăm hoặc vượt 6% (nền hiện tại 3,97% trong phạm vi pilot), hoặc có >= 1 ca hoàn trùng (refund_ledger_write) TRONG 3 ngày liên tiếp THÌ Giám đốc vận hành LogiX-VN bấm cờ tắt trợ lý trong 30 phút KHÔNG THÌ không được chuyển sang bước rollout tiếp theo"
+    - "NẾU chi phí mỗi việc thành công > 8.000 đ hoặc tỉ lệ xem lại > 50% từ bước rollout 0.25 (kết hợp tỉ lệ lam_lai > 7%) TRONG 2 tuần liên tiếp THÌ PM trợ lý hoàn phí thu hẹp phạm vi về chỉ noi_dia và giới hạn tối đa 2 lần chạy KHÔNG THÌ không được mở rộng tiếp hang_nang"
+    - "NẾU tỉ lệ bỏ qua gợi ý (sua + bo) > 40% hoặc tỉ lệ yêu cầu có gợi ý được hiển thị (agent_suggestion_shown) < 60% ở nhóm can thiệp TRONG 1 tuần THÌ Trưởng nhóm CSKH phỏng vấn 5 nhân viên trong 3 ngày để sửa quy trình/giao diện KHÔNG THÌ không được chuyển bước rollout tiếp theo"
   interim_looks: "chỉ kiểm tra chỉ số an toàn"
   rollback: "?"                   # ai bấm, mất bao lâu, khách được phục vụ bằng gì
   decision_date: "?"
