@@ -20,7 +20,7 @@ Nhóm: NhomTVA · Lớp: L3B
 | --- | --- | --- |
 | Sửa khoá chống hoàn trùng (`idempotency_key`) và đối soát sổ cái mỗi giờ (ca 7, 20), ngưỡng 0 ca trước ngày bắt đầu | Kỹ sư trưởng agent | 2026-12-04 |
 | Ký chấp nhận MDE 6 điểm, power 0,64 ở mức 5 điểm và kéo dài bước 0,50 tối thiểu 8–10 ngày để đủ m ≥ 299 đơn/người (đã chốt `pilot_plan.yaml`) | Giám đốc vận hành | 2026-12-04 |
-| Bật đủ 12 event có `trace_id`; thay phút xem lại, làm lại [simulated] bằng phút đo thật từ `staff_review_decision`, `staff_rework_completed` | PM trợ lý hoàn phí | 2026-12-14 (sau tuần 1) |
+| Bật đủ 12 event có `trace_id`; thay phút xem lại, làm lại [simulated] bằng phút đo thật từ `staff_review_decision`, `staff_rework_completed` | PM trợ lý hoàn phí | 2026-12-22 (sau tuần 1) |
 | Giảm xem lại theo bậc khi tỉ lệ sửa + bỏ < 15%; mỗi lần xem lại ≤ 5,1 phút mới hoà vốn (B4) | Trưởng nhóm CSKH | 2026-12-28 (cuối bước 0,25) |
 
 <!-- Nguồn số mục 1–3: output `cd src && python lab13.py`, Người 4 chạy lại trên máy riêng; khớp 100% với số tính độc lập từ hai file CSV. -->
